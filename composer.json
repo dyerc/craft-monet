@@ -2,7 +2,7 @@
     "name": "dyerc/craft-monet",
     "description": "Generate ultra efficient image placeholders in an asset field.",
     "type": "craft-plugin",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "keywords": [
         "craft",
         "cms",
@@ -41,5 +41,11 @@
         "documentationUrl": "https://github.com/dyerc/craft-monet/blob/master/README.md",
         "changelogUrl": "https://raw.githubusercontent.com/dyerc/craft-monet/master/CHANGELOG.md",
         "class": "dyerc\\monet\\Monet"
+    },
+    "config": {
+        "allow-plugins": {
+            "yiisoft/yii2-composer": true,
+            "craftcms/plugin-installer": true
+        }
     }
 }
