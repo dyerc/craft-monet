@@ -8,7 +8,7 @@ use craft\base\Field;
 use craft\elements\Asset;
 use craft\helpers\Json;
 use dyerc\monet\Monet;
-use dyerc\monet\Models\Placeholder;
+use dyerc\monet\models\Placeholder;
 use yii\db\Schema;
 
 class MonetField extends Field

@@ -28,7 +28,7 @@ cd /path/to/my-project
 composer require dyerc/craft-monet
 
 # Tell Craft to install the plugin
-./craft install/plugin craft-monet
+./craft install/plugin monet
 ```
 
 ## Usage

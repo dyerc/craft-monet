@@ -14,8 +14,8 @@
         "lazyload"
     ],
     "support": {
-        "docs": "https://github.com/dyerc/monet/blob/master/README.md",
-        "issues": "https://github.com/dyerc/monet/issues"
+        "docs": "https://github.com/dyerc/craft-monet/blob/master/README.md",
+        "issues": "https://github.com/dyerc/craft-monet/issues"
     },
     "license": "MIT",
     "authors": [
@@ -38,8 +38,8 @@
         "handle": "monet",
         "developer": "Chris Dyer",
         "developerUrl": "https://cdyer.co.uk",
-        "documentationUrl": "https://github.com/dyerc/monet/blob/master/README.md",
-        "changelogUrl": "https://raw.githubusercontent.com/dyerc/monet/master/CHANGELOG.md",
+        "documentationUrl": "https://github.com/dyerc/craft-monet/blob/master/README.md",
+        "changelogUrl": "https://raw.githubusercontent.com/dyerc/craft-monet/master/CHANGELOG.md",
         "class": "dyerc\\monet\\Monet"
     }
 }
