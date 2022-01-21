@@ -1,0 +1,45 @@
+{
+    "name": "dyerc/craft-monet",
+    "description": "Generate ultra efficient image placeholders in an asset field.",
+    "type": "craft-plugin",
+    "version": "1.0.0",
+    "keywords": [
+        "craft",
+        "cms",
+        "craftcms",
+        "craft-plugin",
+        "monet",
+        "image-placeholder",
+        "placeholder",
+        "lazyload"
+    ],
+    "support": {
+        "docs": "https://github.com/dyerc/monet/blob/master/README.md",
+        "issues": "https://github.com/dyerc/monet/issues"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Chris Dyer",
+            "homepage": "https://cdyer.co.uk"
+        }
+    ],
+    "require": {
+        "craftcms/cms": "^3.2.0",
+        "ksubileau/color-thief-php": "^1.4"
+    },
+    "autoload": {
+        "psr-4": {
+          "dyerc\\monet\\": "src/"
+        }
+    },
+    "extra": {
+        "name": "Monet",
+        "handle": "monet",
+        "developer": "Chris Dyer",
+        "developerUrl": "https://cdyer.co.uk",
+        "documentationUrl": "https://github.com/dyerc/monet/blob/master/README.md",
+        "changelogUrl": "https://raw.githubusercontent.com/dyerc/monet/master/CHANGELOG.md",
+        "class": "dyerc\\monet\\Monet"
+    }
+}

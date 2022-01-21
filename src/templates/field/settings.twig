@@ -1,0 +1,17 @@
+{% import "_includes/forms" as forms %}
+
+{{ forms.lightswitchField({
+    label: 'Micro Preview'|t('monet'),
+    instructions: 'Store a tiny version of the image which can be rendered at the original image size and optionally blurred to yield an approximation of the original image.'|t('monet'),
+    id: 'generateMicroPreview',
+    name: 'generateMicroPreview',
+    on: field.generateMicroPreview
+}) }}
+
+{{ forms.lightswitchField({
+    label: 'Colour Palette'|t('monet'),
+    instructions: 'Store a colour palette as hex codes.'|t('monet'),
+    id: 'generateColourPalette',
+    name: 'generateColourPalette',
+    on: field.generateColourPalette
+}) }}

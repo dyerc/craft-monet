@@ -1,0 +1,23 @@
+{
+  "name": "monet",
+  "version": "1.0.0",
+  "private": true,
+  "browserslist": [
+    "defaults",
+    "Edge >= 15",
+    "Chrome >= 29",
+    "Safari >= 9",
+    "ie >= 11",
+    "Firefox >= 28",
+    "iOS >= 9.1",
+    "Android >= 4.4"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^2.7.13"
+  }
+}

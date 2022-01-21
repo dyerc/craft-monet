@@ -1,0 +1,34 @@
+{% do view.registerAssetBundle("dyerc\\monet\\assetbundles\\MonetAssets") %}
+
+{% set rawData = model.rawDataUrl %}
+
+{% if rawData %}
+  <div id="monet-preview" class="monet-preview">
+    <svg viewBox="0 0 {{ model.assetWidth }} {{ model.assetHeight }}" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <defs>
+        <filter id="filter">
+          <feGaussianBlur v-bind:std-deviation.camel="blurFactor" in="SourceGraphic" />
+          <feColorMatrix type="matrix" values="1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 9 0" />
+          <feComposite in2="SourceGraphic" operator="in" />
+        </filter>
+      </defs>
+      <image filter="url(#filter)" x="0" y="0" width="{{ model.assetWidth }}" height="{{ model.assetHeight }}" xlink:href="{{ rawData }}" />
+    </svg>
+
+    <div class="blur-slider">
+      <span v-text="blurFactor"></span>
+
+      <input type="range" min="1" max="100" orient="vertical" v-model="blurFactor">
+    </div>
+
+    <div class="monet-swatches">
+      {% for c in model.colourPalette %}
+        <div>
+          <div class="monet-swatch" style="background-color: {{ c }};" title="{{ c }}"></div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% else %}
+  <i>Not yet processed or this asset is an unsupported format.</i>
+{% endif %}
