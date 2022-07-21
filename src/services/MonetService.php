@@ -7,6 +7,7 @@ use Craft;
 use craft\base\Component;
 use craft\base\ElementInterface;
 use craft\elements\Asset;
+use craft\helpers\ImageTransforms;
 use craft\helpers\ElementHelper;
 use craft\base\Field;
 use craft\helpers\Image;
@@ -23,7 +24,7 @@ class MonetService extends Component {
     const PREPROCESS_WIDTH = 300;
     const PREPROCESS_QUALITY = 80;
 
-    public function generate(Field $field, ElementInterface $asset)
+    public function generate(Field $field, ElementInterface $asset): void
     {
         /** @var Asset $asset */
         if ($asset instanceof Asset && $field instanceof MonetField) {
@@ -146,7 +147,7 @@ class MonetService extends Component {
         $height = (int)($width / $aspectRatio);
 
         if (Image::canManipulateAsImage($asset->getExtension())) {
-            $imageSource = $asset->getTransformSource();
+            $imageSource = ImageTransforms::getLocalImageSource($asset);
             $tempPath = $this->resizeImageFromPath($imageSource, $width, $height, self::PREPROCESS_QUALITY, $position);
         } else {
             $tempPath = '';
@@ -172,11 +173,11 @@ class MonetService extends Component {
         $images = Craft::$app->getImages();
         $pathInfo = pathinfo($filePath);
 
-        /** @var Image $image */
         try {
             // TODO: Enable SVG support
             // StringHelper::toLowerCase($pathInfo['extension']) === 'svg'
 
+            /** @var Raster $image */
             $image = $images->loadImage($filePath);
         } catch (\Throwable $e) {
             Craft::error('Error loading image: ' . $e->getMessage(), __METHOD__);

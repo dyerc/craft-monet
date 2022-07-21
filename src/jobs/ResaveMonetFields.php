@@ -24,7 +24,7 @@ class ResaveMonetFields extends BaseJob
 
     public $fieldId;
 
-    public $force = false;
+    public bool $force = false;
 
     /**
      * Process and re-save all Monet fields based on assets matching $criteria
@@ -32,11 +32,10 @@ class ResaveMonetFields extends BaseJob
      * @param $queue
      * @return void
      */
-    public function execute($queue)
+    public function execute($queue): void
     {
         Craft::$app->getElements()->invalidateCachesForElementType(Asset::class);
 
-        /** @var ElementQuery $query */
         $query = Asset::find();
         if (!empty($this->criteria)) {
             Craft::configure($query, $this->criteria);
@@ -59,9 +58,8 @@ class ResaveMonetFields extends BaseJob
 
                 $layout = $element->getFieldLayout();
                 if ($layout !== null) {
-                    $fields = $layout->getFields();
+                    $fields = $layout->getCustomFields();
 
-                    /** @var  $field Field */
                     foreach ($fields as $field) {
                         if ($field instanceof MonetField) {
                             try {

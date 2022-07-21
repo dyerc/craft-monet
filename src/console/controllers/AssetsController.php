@@ -3,7 +3,7 @@
 namespace dyerc\monet\console\controllers;
 
 use Craft;
-use craft\base\Volume;
+use craft\models\Volume;
 use craft\console\Controller;
 use craft\errors\SiteNotFoundException;
 use craft\helpers\App;
@@ -13,9 +13,9 @@ use dyerc\monet\jobs\ResaveMonetFields;
 use yii\queue\redis\Queue as RedisQueue;
 
 class AssetsController extends Controller {
-    public $force = false;
+    public bool $force = false;
 
-    public function actionGenerate()
+    public function actionGenerate(): void
     {
         echo "Creating image placeholders...".PHP_EOL;
 
@@ -23,7 +23,8 @@ class AssetsController extends Controller {
         $this->runCraftQueue();
     }
 
-    private function runCraftQueue() {
+    private function runCraftQueue(): void
+    {
         App::maxPowerCaptain();
         $queue = Craft::$app->getQueue();
 
@@ -34,25 +35,24 @@ class AssetsController extends Controller {
         }
     }
 
-    private function resaveAllVolumeAssets($fieldId = null, $force = false)
+    private function resaveAllVolumeAssets($fieldId = null, $force = false): void
     {
         $volumes = Craft::$app->getVolumes()->getAllVolumes();
         foreach ($volumes as $volume) {
-            if (is_subclass_of($volume, Volume::class)) {
-                /** @var Volume $volume */
+            if (is_a($volume, Volume::class)) {
                 $this->resaveVolumeAssets($volume, $fieldId, $force);
             }
         }
     }
 
-    private function resaveVolumeAssets(Volume $volume, $fieldId = null, $force = false)
+    private function resaveVolumeAssets(Volume $volume, $fieldId = null, $force = false): void
     {
         $processVolume = false;
         $fieldLayout = $volume->getFieldLayout();
 
         // Only process field layouts with a Monet field
         if ($fieldLayout) {
-            $fields = $fieldLayout->getFields();
+            $fields = $fieldLayout->getCustomFields();
 
             foreach ($fields as $field) {
                 if ($field instanceof MonetField) {

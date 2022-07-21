@@ -12,22 +12,22 @@ class Placeholder extends Model
     /**
      * @var int
      */
-    public $assetWidth = 0;
+    public int $assetWidth = 0;
 
     /**
      * @var int
      */
-    public $assetHeight = 0;
+    public int $assetHeight = 0;
 
     /**
      * @var string
      */
-    public $microPreview;
+    public string $microPreview;
 
     /**
      * @var array
      */
-    public $colourPalette;
+    public array $colourPalette;
 
     /**
      * Alias for blurredDataUrl

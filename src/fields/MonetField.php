@@ -37,7 +37,7 @@ class MonetField extends Field
     /**
      * @inheritdoc
      */
-    public function getContentColumnType()
+    public function getContentColumnType(): array|string
     {
         return Schema::TYPE_TEXT;
     }
@@ -45,7 +45,7 @@ class MonetField extends Field
     /**
      * @inheritdoc
      */
-    public function normalizeValue($value, ElementInterface $asset = null)
+    public function normalizeValue($value, ElementInterface $asset = null): mixed
     {
         if ($value instanceof Placeholder) {
             return $value;
@@ -70,7 +70,7 @@ class MonetField extends Field
     /**
      * @inheritdoc
      */
-    public function afterElementSave(ElementInterface $element, bool $isNew)
+    public function afterElementSave(ElementInterface $element, bool $isNew): void
     {
         parent::afterElementSave($element, $isNew);
 
@@ -105,7 +105,10 @@ class MonetField extends Field
                 ]);
             } catch (\Twig\Error\LoaderError|\yii\base\Exception $e) {
                 Craft::error($e->getMessage(), __METHOD__);
+                return $e->getMessage();
             }
+        } else {
+            return "";
         }
     }
 }
